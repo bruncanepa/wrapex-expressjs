@@ -1,12 +1,21 @@
 {
-  "name": "express-wrapper",
+  "name": "wrapex",
   "version": "1.0.0",
-  "description": "A simple Express Router wrapper",
+  "description": "A minimalist, async and configurable express.js wrapper with error handling ",
   "main": "index.js",
-  "repository": "https://github.com/brunocanepa/express-wrapper.git",
+  "repository": "https://github.com/brunocanepa/wrapex.git",
   "author": "Bruno Cánepa <brucanepa@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3"
-  }
+  },
+  "keywords": [
+    "nodejs",
+    "node.js",
+    "expressjs",
+    "express.js",
+    "express-wrapper",
+    "wrapper",
+    "wrapper-api"
+  ]
 }
