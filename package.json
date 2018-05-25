@@ -1,0 +1,12 @@
+{
+  "name": "express-wrapper",
+  "version": "1.0.0",
+  "description": "A simple Express Router wrapper",
+  "main": "index.js",
+  "repository": "https://github.com/brunocanepa/express-wrapper.git",
+  "author": "Bruno Cánepa <brucanepa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
