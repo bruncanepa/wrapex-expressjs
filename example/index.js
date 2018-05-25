@@ -7,7 +7,7 @@ const routes = require('./routes');
 // api URI prefix
 const routePrefix = '/api';
 
-// this middlewares will be executed before all endpoints
+// these middlewares will be executed before all endpoints
 const middlewares = [
   bodyParser.urlencoded({extended: true}),
   bodyParser.json(),
