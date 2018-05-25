@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const {wrapex, OptionMap} = require('../lib');
+const {wrapex, OptionalMiddleware} = require('wrapex');
 
 // all routes with their Router
 const routes = require('./routes');
@@ -25,22 +25,22 @@ const onError = ({req, res, next, error}) => {
 };
 
 // when 'authorize' or 'log' option is passed, the middleware asociated will be executed before endpoint
-const optionsMap = [
-  new OptionMap('authorize', (req, res, next) => {
+const optionalsMiddlewares = [
+  new OptionalMiddleware('authorize', (req, res, next) => {
     if (req.body.password == 'password') {
       next();
     } else {
       res.send('Unauthorized');
     }
   }),
-  new OptionMap('log', (req, res, next) => {
-    console.log('Logger')
+  new OptionalMiddleware('log', (req, res, next) => {
+    console.log('Logger');
     next();
-  }, true), // 'log' option will be always executed, unless {log: false} is passed
+  }, true), // 'log' middleware will be always executed, unless {log: false} is passed
 ];
 
-// returns express.js app
-const app = wrapex({middlewares, routes, routePrefix, optionsMap, onError});
+// returns express.js app ( require('express')() )
+const app = wrapex({middlewares, routes, routePrefix, optionalsMiddlewares, onError});
 
 app.listen(3002, () => {
   console.log(`NodeJs: Listening on port: ${3002}`);

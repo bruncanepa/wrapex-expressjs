@@ -34,7 +34,7 @@ const app = wrapex({routes});
  * middlewares: an array of midlewares, that will be executed before endpoints
  * routePrefix: a prefix for all routes
  * routes: all the API URIs, with their Router 
- * optionsMap: execute middlewares before endpoints when the option is passed
+ * optionalsMiddlewares: execute optional middlewares before endpoints when the option is passed
  * onError: function that will be executed when an error ocurres
  */
 

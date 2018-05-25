@@ -23,7 +23,7 @@ module.exports = (router) => (
   router
     .use('/use', use)
     .get('/', get)
-    .post('/', post, {authorize: true}) // 'authorize' option middleware will be executed before post endpoint
+    .post('/', post, {authorize: true}) // 'authorize' optional middleware will be executed before post endpoint
     .put('/', put)
     .delete('/', deleteH)
 );
