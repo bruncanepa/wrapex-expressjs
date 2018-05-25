@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const {express, OptionMap} = require('express-wrapper');
+const {wrapex, OptionMap} = require('wrapex');
 
 const routes = require('./routes');
 
@@ -34,7 +34,7 @@ const optionsMap = [
   }, true),
 ];
 
-const app = express({middlewares, routes, routePrefix, optionsMap, onError});
+const app = wrapex({middlewares, routes, routePrefix, optionsMap, onError});
 
 app.listen(3002, () => {
   console.log(`NodeJs: Listening on port: ${3002}`);
