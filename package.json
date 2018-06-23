@@ -1,13 +1,20 @@
 {
   "name": "wrapex",
   "version": "1.0.0",
-  "description": "A minimalist, async and configurable express.js wrapper with error handling ",
+  "description": "A minimalist, async and configurable express.js wrapper with error handling",
   "main": "index.js",
   "repository": "https://github.com/brunocanepa/wrapex.git",
   "author": "Bruno Cánepa <brucanepa@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test jest --forceExit ./tests"
+  },
   "dependencies": {
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "jest": "^23.1.0"
   },
   "keywords": [
     "nodejs",
