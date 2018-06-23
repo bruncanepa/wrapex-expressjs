@@ -1,6 +1,6 @@
 {
   "name": "wrapex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimalist, async and configurable express.js wrapper with error handling",
   "main": "index.js",
   "repository": "https://github.com/brunocanepa/wrapex.git",
