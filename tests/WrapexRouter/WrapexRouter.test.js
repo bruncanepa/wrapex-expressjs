@@ -1,10 +1,5 @@
-const {
-  request,
-  runServer,
-  ERROR_CODE,
-  SUCCESS_CODE, 
-  API_ROUTE
-} = require("./setUp");
+const { API_ROUTE, request, SUCCESS_CODE, ERROR_CODE } = require('../utils');
+const runServer = require('./setUp');
 
 describe("WrapexRouter tests", () => {
   const route = API_ROUTE;

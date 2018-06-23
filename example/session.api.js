@@ -1,29 +1,34 @@
+function get(req, res) {
+  res.send(req.useMide);
+}
 
-const get = (req, res) => {
-  res.send('session get');
-};
+function post(req, res) {
+  res.send(req.useMide);
+}
 
-const post = (req, res) => {
-  res.send('session post',);
-};
+function deleteH(req, res) {
+  res.send(req.useMide);
+}
 
-const deleteH = (req, res) => {
-  res.send('session delete');
-};
+function put(req, res) {
+  res.send(req.useMide);
+}
 
-const put = (req, res) => {
-  res.send('session put');
-};
+function use(req, res) {
+  res.send(req.useMide);
+}
 
-const use = (req, res) => {
-  res.send('session use');
-};
+function useMid(req, res, next) {
+  req.useMide = true;
+  next();
+}
 
-module.exports = (router) => (
+module.exports = router => {
   router
-    .use('/use', use)
-    .get('/', get)
-    .post('/', post, {authorize: true}) // 'authorize' optional middleware will be executed before post endpoint
-    .put('/', put)
-    .delete('/', deleteH)
-);
+    .use(useMid)
+    .use("/use", use)
+    .get("/", get)
+    .post("/", post, { authorize: true }) // 'authorize' optional middleware will be executed before post endpoint
+    .put("/", put)
+    .delete("/", deleteH);
+};

@@ -1,49 +1,61 @@
-const bodyParser = require('body-parser');
-const {wrapex, OptionalMiddleware} = require('wrapex');
+const bodyParser = require("body-parser");
+const { wrapex, OptionalMiddleware } = require("wrapex");
 
 // all routes with their Router
-const routes = require('./routes');
+const routes = require("./routes");
 
 // api URI prefix
-const routePrefix = '/api';
+const routePrefix = "/api";
 
 // this middlewares will be executed before all endpoints
 const middlewares = [
-  bodyParser.urlencoded({extended: true}),
+  bodyParser.urlencoded({ extended: true }),
   bodyParser.json(),
   function setHeaders(req, res, next) {
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', `Content-Type, Accept`);
+    res.header("Access-Control-Allow-Origin", "*");
     next();
   }
 ];
 
 // function to be executed on errors
-const onError = ({req, res, next, error}) => {
+const onError = ({ req, res, next, error }) => {
   console.log(error);
-  res.send('Ups! Error');
+  res.status(500).send({ success: false });
 };
 
 // when 'authorize' or 'log' option is passed, the middleware asociated will be executed before endpoint
 const optionalsMiddlewares = [
-  new OptionalMiddleware('authorize', (req, res, next) => {
-    if (req.body.password == 'password') {
+  new OptionalMiddleware("authorize", (req, res, next) => {
+    if (req.body.password == "password") {
       next();
     } else {
-      res.send('Unauthorized');
+      res.status(401).send("Unauthorized");
     }
   }),
-  new OptionalMiddleware('log', (req, res, next) => {
-    console.log('Logger');
-    next();
-  }, true), // 'log' middleware will be always executed, unless {log: false} is passed
+  new OptionalMiddleware(
+    "log",
+    (req, res, next) => {
+      console.log("Logger");
+      next();
+    },
+    true
+  ) // 'log' middleware will be always executed, unless {log: false} is passed
 ];
 
 // returns express.js app ( require('express')() )
-const app = wrapex({middlewares, routes, routePrefix, optionalsMiddlewares, onError});
-
-app.listen(3002, () => {
-  console.log(`NodeJs: Listening on port: ${3002}`);
+const app = wrapex({
+  middlewares,
+  routes,
+  routePrefix,
+  optionalsMiddlewares,
+  onError
 });
 
-module.exports = app;
+module.exports = (port = 3002) => {
+  return new Promise(resolve => {
+    const server = app.listen(port, () => {
+      console.log(`NodeJs: Listening on port: ${port}`);
+      resolve(server);
+    });
+  });
+};
