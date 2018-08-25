@@ -31,7 +31,7 @@ const routes = {
 // routes is the only required param
 const app = wrapex({routes});
 /**
- * middlewares: an array of midlewares, that will be executed before endpoints
+ * middlewares: an array of middlewares, that will be executed before endpoints
  * routePrefix: a prefix for all routes
  * routes: all the API URIs, with their Router 
  * optionalsMiddlewares: execute optional middlewares before endpoints when the option is passed
