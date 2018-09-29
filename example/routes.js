@@ -1,3 +1,3 @@
 module.exports = {
-  '/session': require('./session.api')
+  '/session': require('./session.api'),
 };

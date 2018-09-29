@@ -38,8 +38,8 @@ async function asyncSuccess(req, res) {
   res.status(SUCCESS_CODE).send(req.asyncUse);
 }
 
-function onError({req, res, next, error}) {
-  res.status(ERROR_CODE).send({success: false});
+function onError({ req, res, next, error }) {
+  res.status(ERROR_CODE).send({ success: false });
 }
 
 module.exports = {
@@ -53,5 +53,5 @@ module.exports = {
   ERROR_CODE,
   ERROR_MESSAGE,
   API_ROUTE,
-  PORT
+  PORT,
 };

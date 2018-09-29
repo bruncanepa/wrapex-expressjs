@@ -26,9 +26,9 @@ function useMid(req, res, next) {
 module.exports = router => {
   router
     .use(useMid)
-    .use("/use", use)
-    .get("/", get)
-    .post("/", post, { authorize: true }) // 'authorize' optional middleware will be executed before post endpoint
-    .put("/", put)
-    .delete("/", deleteH);
+    .use('/use', use)
+    .get('/', get)
+    .post('/', post, { authorize: true }) // 'authorize' optional middleware will be executed before post endpoint
+    .put('/', put)
+    .delete('/', deleteH);
 };
