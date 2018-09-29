@@ -1,5 +1,4 @@
 const axios = require('axios');
-const net = require('net');
 
 const SUCCESS_CODE = 200;
 const ERROR_CODE = 500;
